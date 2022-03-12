@@ -27,7 +27,10 @@ impl Interpreter {
             }
 
             InstructionKind::IncrementPtr => {
-                self.memory.push(0);
+                if self.ptr + 1 >= self.memory.len() {
+                    self.memory.push(0);
+                }
+
                 self.ptr += 1;
             }
 

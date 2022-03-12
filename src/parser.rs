@@ -14,12 +14,12 @@ pub enum InstructionKind {
 pub struct Instruction {
     pub kind: InstructionKind,
     pub index: usize,
-    pub char: char,
+    pub ch: char,
 }
 
 impl Instruction {
-    pub fn from(char: char, index: usize) -> Option<Instruction> {
-        let kind = match char {
+    pub fn from(ch: char, index: usize) -> Option<Instruction> {
+        let kind = match ch {
             '>' => InstructionKind::IncrementPtr,
             '<' => InstructionKind::DecrementPtr,
             '+' => InstructionKind::Increment,
@@ -31,7 +31,7 @@ impl Instruction {
             _ => return None,
         };
 
-        Some(Instruction { kind, index, char })
+        Some(Instruction { kind, index, ch })
     }
 }
 
